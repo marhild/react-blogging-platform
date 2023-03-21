@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
         lowercase: true,
     },
     profile: {
-        type: stringify,
+        type: String,
         required: true,
     },
     hashed_password: {
