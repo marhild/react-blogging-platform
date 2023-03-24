@@ -4,8 +4,8 @@ import Router from 'next/router';
 
 const SigninComponent = () => {
     const [values, setValues] = useState({
-        email: 'ryan@gmail.com',
-        password: 'rrrrrr',
+        email: 'Bill@Burr.com',
+        password: 'password',
         error: '',
         loading: false,
         message: '',
@@ -81,12 +81,12 @@ const SigninComponent = () => {
     };
 
     return (
-        <React.Fragment>
+        <div>
             {showError()}
             {showLoading()}
             {showMessage()}
             {showForm && signinForm()}
-        </React.Fragment>
+        </div>
     );
 };
 
