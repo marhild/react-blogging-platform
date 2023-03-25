@@ -12,10 +12,11 @@ router.post('/signin', userSigninValidator, runValidation, signin);
 router.get( '/signout', signout)
 
 //test
+/*
 router.get('/secret', requireSignin, (req, res) => {
     res.json({
-        message: 'you have access to secure page'
+        message: req.user
     })
 })
-
+*/
 module.exports = router
