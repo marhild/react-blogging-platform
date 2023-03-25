@@ -55,6 +55,26 @@ const Header = () => {
                 </NavLink>
               </NavItem>
             )}
+
+            {isAuth() && isAuth().role === 0 && (
+              <NavItem>
+                <NavLink>
+                  <Link href="/user">
+                    {`${isAuth().name}'s Dashboard`}
+                  </Link>
+                </NavLink>
+              </NavItem>
+            )}  
+
+            {isAuth() && isAuth().role === 1 && (
+              <NavItem>
+                <NavLink>
+                  <Link href="/admin">
+                    {`${isAuth().name}'s Dashboard`}
+                  </Link>
+                </NavLink>
+              </NavItem>
+            )}  
           </Nav>
         </Collapse>
       </Navbar>
