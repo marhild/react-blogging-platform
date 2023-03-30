@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import {signup} from '../../actions/auth'
+import {signup, isAuth} from '../../actions/auth'
 
 
 const SignupComponent = () => {

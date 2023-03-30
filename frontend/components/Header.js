@@ -43,7 +43,7 @@ const Header = () => {
             {!isAuth() && (
               <div>
                 <NavItem>
-                  <Link href="/signin">
+                  <Link href="/signin" legacyBehavior>
                     <NavLink>Signin</NavLink>
                   </Link>
                 </NavItem>

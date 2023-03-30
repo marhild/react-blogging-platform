@@ -4,7 +4,7 @@ import Router from 'next/router';
 
 const SigninComponent = () => {
     const [values, setValues] = useState({
-        email: 'Bill@Burr.com',
+        email: 'Bill@Admin.com',
         password: 'password',
         error: '',
         loading: false,
@@ -14,7 +14,9 @@ const SigninComponent = () => {
 
     const { email, password, error, loading, message, showForm } = values;
 
-    useEffect(() => {
+    
+
+    useEffect(() => {  
         isAuth() && Router.push(`/`);
     }, []);
 
