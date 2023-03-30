@@ -1,60 +1,59 @@
-const Category = require('../models/category')
 const slugify = require('slugify')
 const {errorHandler} = require('../helpers/dbErrorHandler');
+const Tag = require('../models/tag')
 
 exports.create = (req, res) => {
-    const {} = req.body
-    let slug = slugify(name).toLowerCase()
+    const { name } = req.body;
+    let slug = slugify(name).toLowerCase();
 
-    let category = new Category({name, slug})
+    let tag = new Tag({ name, slug });
 
-    category.save((err, data) => {
-        if(err) {
+    tag.save((err, data) => {
+        if (err) {
+            console.log(err);
             return res.status(400).json({
                 error: errorHandler(err)
-            })
+            });
         }
-
-        res.json(data)
-    })
-
-}
+        res.json(data); 
+    });
+};
 
 exports.list = (req, res) => {
-    Category.find({}).exec((err, data) => {
-        if(err) {
-            return res.status(400).json({
-                error: errorHandler(err)
-            })
-        }
-        res.json(data)
-    })
-}
-
-exports.read = (req, res) => {
-    const slug = req.params.slug.toLowerCase();
-
-    Category.findOne({ slug }).exec((err, category) => {
+    Tag.find({}).exec((err, data) => {
         if (err) {
             return res.status(400).json({
                 error: errorHandler(err)
             });
         }
-        res.json(category);
+        res.json(data);
+    });
+};
+
+exports.read = (req, res) => {
+    const slug = req.params.slug.toLowerCase();
+
+    Tag.findOne({ slug }).exec((err, tag) => {
+        if (err) {
+            return res.status(400).json({
+                error: 'Tag not found'
+            });
+        }
+        res.json(tag);
     });
 };
 
 exports.remove = (req, res) => {
     const slug = req.params.slug.toLowerCase();
 
-    Category.findOneAndRemove({slug}).exec((err, data) => {
-        if(err) {
+    Tag.findOneAndRemove({ slug }).exec((err, data) => {
+        if (err) {
             return res.status(400).json({
                 error: errorHandler(err)
-            })
+            });
         }
         res.json({
-            message: 'Category deleted successfully'
-        })
-    })
-}
+            message: 'Tag deleted successfully'
+        });
+    });
+};
