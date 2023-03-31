@@ -1,23 +1,23 @@
 import fetch from 'isomorphic-fetch';
 
-export const create = (category, token) => {
-    return fetch(`http://localhost:8000/api/category`, {
+export const create = (tag, token) => {
+    return fetch(`http://localhost:8000/api/tag`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(category)
+        body: JSON.stringify(tag)
     })
-    .then(response => {
-        return response.json()
-    })
-    .catch(err => console.log(err))
-}
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
 
-export const getCategories = () => {
-    return fetch(`http://localhost:8000/api/categories`, {
+export const getTags = () => {
+    return fetch(`http://localhost:8000/api/tags`, {
         method: 'GET'
     })
         .then(response => {
@@ -26,18 +26,18 @@ export const getCategories = () => {
         .catch(err => console.log(err));
 };
 
-export const singleCategory = (slug) => {
-    return fetch(`http://localhost:8000/api/category/${slug}`, {
-        method: 'GET',
+export const singleTag = slug => {
+    return fetch(`http://localhost:8000/api/tag/${slug}`, {
+        method: 'GET'
     })
-    .then(response => {
-        return response.json()
-    })
-    .catch(err => console.log(err))
-}
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
 
-export const removeCategory = (slug, token) => {
-    return fetch(`http://localhost:8000/api/category/${slug}`, {
+export const removeTag = (slug, token) => {
+    return fetch(`http://localhost:8000/api/tag/${slug}`, {
         method: 'DELETE',
         headers: {
             Accept: 'application/json',
