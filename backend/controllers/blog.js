@@ -74,7 +74,7 @@ exports.create = (req, res) => {
                     error: errorHandler(err)
                 });
             }
-            // res.json(result);
+            // find recently saved blog to save categories
             Blog.findByIdAndUpdate(result._id, { $push: { categories: arrayOfCategories } }, { new: true }).exec(
                 (err, result) => {
                     if (err) {
